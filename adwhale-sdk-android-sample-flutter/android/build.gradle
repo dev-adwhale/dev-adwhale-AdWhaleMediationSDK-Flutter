@@ -1,0 +1,88 @@
+group = "com.example.adwhale_flutter_sample"
+version = "1.0"
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        // AdWhale SDK Repository Public Access Info
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/dev-adwhale/AdWhaleAndroid/SDK")
+            credentials {
+                username = 'ADwhale Mediation SDK 가이드 내 키값 참조'
+                password = 'ADwhale Mediation SDK 가이드 내 키값 참조'
+            }
+        }
+
+        // Cauly SDK Repository Public Access Info
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/cauly/Android-SDK/SDK")
+            credentials {
+                username = 'ADwhale Mediation SDK 가이드 내 키값 참조'
+                password = 'ADwhale Mediation SDK 가이드 내 키값 참조'
+            }
+        }
+        // Admize SDK Repository Public Access Info
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/cauly/admize-sdk-android/SDK")
+            credentials {
+                username = 'ADwhale Mediation SDK 가이드 내 키값 참조'
+                password = 'ADwhale Mediation SDK 가이드 내 키값 참조'
+            }
+        }
+
+        // AdFit SDK Repository Public Access Info
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 34
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+}
+
+dependencies{
+
+    // 기본 디펜던시: ADwhale Mediation SDK Repository
+    implementation 'net.adwhale.sdk.mediation:adwhale-mediation-sdk:2.5.1'
+
+    // 옵션 디펜던시(제외가능): Cauly Adapter SDK Repository
+    implementation 'net.adwhale.sdk.cauly.adapter:cauly-sdk:3.5.34'
+
+    // 옵션 디펜던시(제외가능): Admize Adapter SDK Repository
+    implementation 'net.adwhale.sdk.admize.adapter:admize-sdk:1.0.3'
+
+    // 옵션 디펜던시(제외가능): AdFit Adapter SDK Repository
+    implementation 'net.adwhale.sdk.adfit.adapter:adfit-sdk:3.17.2'
+
+    // 옵션 디펜던시(제외가능): Admob Adapter SDK Repository
+    implementation 'net.adwhale.sdk.admob.adapter:admob-sdk:23.6.0'
+
+}
