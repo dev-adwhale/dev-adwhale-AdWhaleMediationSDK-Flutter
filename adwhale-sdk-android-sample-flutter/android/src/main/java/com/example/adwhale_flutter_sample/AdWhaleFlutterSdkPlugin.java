@@ -18,6 +18,7 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.StandardMethodCodec;
+import net.adwhale.sdk.utils.AdWhaleLog;
 
 public class AdWhaleFlutterSdkPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
     /// The MethodChannel that will the communication between Flutter and native Android
@@ -101,6 +102,7 @@ public class AdWhaleFlutterSdkPlugin implements FlutterPlugin, MethodCallHandler
         switch (call.method) {
             case "_init":
                 Log.d(TAG, "AdWhaleFlutterSdkPlugin _init");
+                AdWhaleLog.setLogLevel(AdWhaleLog.LogLevel.Verbose);
                 // Internal init. This is necessary to cleanup state on hot restart.
                 AdWhaleMediationAds.init(instanceManager.getActivity(), new AdWhaleMediationOnInitCompleteListener() {
                     @Override
