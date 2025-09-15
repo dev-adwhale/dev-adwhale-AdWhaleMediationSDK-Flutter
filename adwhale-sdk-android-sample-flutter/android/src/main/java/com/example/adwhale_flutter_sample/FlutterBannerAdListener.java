@@ -18,14 +18,14 @@ public class FlutterBannerAdListener implements AdWhaleMediationAdViewListener {
 
     @Override
     public void onAdLoaded() {
-        Log.d(TAG, "FlutterBannerAd onAdLoaded");
-        manager.onAdLoaded(adId);
+        Log.d(TAG, "FlutterBannerAd onReceiveAd");
+        manager.onReceiveAd(adId,true);
     }
 
     @Override
     public void onAdLoadFailed(int i, String s) {
-        Log.d(TAG, "FlutterBannerAd onAdLoadFailed");
-        manager.onAdLoadFailed(adId, i, s);
+        Log.d(TAG, "FlutterBannerAd onFailedToReceiveAd");
+        manager.onFailedToReceiveAd(adId,i,s);
     }
 
     @Override
